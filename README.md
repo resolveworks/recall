@@ -8,7 +8,7 @@ readably; grep/rg does all the finding. See `skills/recall/SKILL.md`.
 ## Install
 
 ```bash
-pi install /home/johan/Projects/recall
+pi install ~/Projects/recall
 ```
 
 Local-path installs are referenced in place — edits here are live, no reinstall

@@ -19,7 +19,7 @@ Each line is one entry; `message` entries carry the conversation (roles: user, a
 
 ```bash
 rg -il 'pattern' ~/.pi/agent/sessions/                 # everywhere, case-insensitive
-rg -il 'pattern' ~/.pi/agent/sessions/--home-johan-Projects-funes--/   # one project
+rg -il 'pattern' ~/.pi/agent/sessions/-${PWD//\//-}--/   # one project: sessions from this cwd
 
 # rank sessions by hits (pathfinder trick):
 rg -ci 'webview' ~/.pi/agent/sessions/--proj--/*.jsonl | sort -t: -k2 -rn | head
@@ -32,7 +32,7 @@ for t in webview plan koog; do rg -il "$t" ~/.pi/agent/sessions/; done | sort | 
 
 ```bash
 show.py --titles                    # this project, newest first
-show.py --titles /home/johan/Projects/pathfinder -n 10
+show.py --titles ~/Projects/pathfinder -n 10
 show.py --titles all -n 10          # across all projects
 ```
 
@@ -60,4 +60,4 @@ show.py FILE 25,30-40                           # or by line number
 - *"What did we decide about X?"* → find sessions → `show.py FILE | rg ' user '` to skim asks → `show.py FILE` for the dialogue around the decision
 - *"Look at our last session"* → `show.py --titles -n 3` → `show.py` newest
 
-Notes: timestamps render in local time; filenames are UTC. `--titles` shows each session's first real user message. The many `--home-johan-.pi-worktrees-*` dirs are subagent sessions.
+Notes: timestamps render in local time; filenames are UTC. `--titles` shows each session's first real user message. The many `--*-.pi-worktrees-*` dirs are subagent sessions.
